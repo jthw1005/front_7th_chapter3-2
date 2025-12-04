@@ -3,23 +3,33 @@ import { CartItem, Coupon } from '../../types';
 import { ProductWithUI } from '../models/product';
 import { useProducts } from '../hooks/useProducts';
 import { useCoupons } from '../hooks/useCoupons';
-import { ProductCard } from './ProductCard';
 import { Cart } from './Cart';
+import { ProductList } from './ProductList';
+import { EmptySearchResult } from './EmptySearchResult';
 import { filterProductsBySearchTerm } from '../models/product';
 
 interface CartPageProps {
   searchTerm: string;
-  onNotification: (message: string, type: 'error' | 'success' | 'warning') => void;
+  onNotification: (
+    message: string,
+    type: 'error' | 'success' | 'warning'
+  ) => void;
   cart: CartItem[];
   selectedCoupon: Coupon | null;
   addToCart: (product: ProductWithUI) => { success: boolean; message?: string };
   removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, newQuantity: number) => { success: boolean; message?: string };
+  updateQuantity: (
+    productId: string,
+    newQuantity: number
+  ) => { success: boolean; message?: string };
   applyCoupon: (coupon: Coupon) => { success: boolean; message?: string };
   clearCoupon: () => void;
   clearCart: () => void;
   calculateItemTotal: (item: CartItem) => number;
-  calculateCartTotal: () => { totalBeforeDiscount: number; totalAfterDiscount: number };
+  calculateCartTotal: () => {
+    totalBeforeDiscount: number;
+    totalAfterDiscount: number;
+  };
   getRemainingStock: (product: ProductWithUI) => number;
 }
 
@@ -105,31 +115,20 @@ export function CartPage({
       <div className="lg:col-span-3">
         <section>
           <div className="mb-6 flex justify-between items-center">
-            <h2 className="text-2xl font-semibold text-gray-800">
-              전체 상품
-            </h2>
+            <h2 className="text-2xl font-semibold text-gray-800">전체 상품</h2>
             <div className="text-sm text-gray-600">
               총 {products.length}개 상품
             </div>
           </div>
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-500">
-                "{searchTerm}"에 대한 검색 결과가 없습니다.
-              </p>
-            </div>
+            <EmptySearchResult searchTerm={searchTerm} />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  remainingStock={getRemainingStock(product)}
-                  formatPrice={formatPrice}
-                  onAddToCart={addToCart}
-                />
-              ))}
-            </div>
+            <ProductList
+              products={filteredProducts}
+              getRemainingStock={getRemainingStock}
+              formatPrice={formatPrice}
+              onAddToCart={addToCart}
+            />
           )}
         </section>
       </div>
@@ -148,25 +147,6 @@ export function CartPage({
           onCompleteOrder={completeOrder}
         />
       </div>
-    </div>
-  );
-}
-
-interface SearchBarProps {
-  searchTerm: string;
-  onSearchChange: (value: string) => void;
-}
-
-export function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
-  return (
-    <div className="ml-8 flex-1 max-w-md">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => onSearchChange(e.target.value)}
-        placeholder="상품 검색..."
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-      />
     </div>
   );
 }
