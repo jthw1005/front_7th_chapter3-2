@@ -105,10 +105,15 @@ export const DEFAULT_PRODUCT_FORM = {
 };
 
 /** 쿠폰 폼 기본값 */
-export const DEFAULT_COUPON_FORM = {
+export const DEFAULT_COUPON_FORM: {
+  name: string;
+  code: string;
+  discountType: 'amount' | 'percentage';
+  discountValue: number;
+} = {
   name: '',
   code: '',
-  discountType: 'amount' as const,
+  discountType: 'amount',
   discountValue: 0,
 };
 
