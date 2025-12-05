@@ -3,11 +3,14 @@ import { render, screen, fireEvent, within, waitFor } from '@testing-library/rea
 import { vi } from 'vitest';
 import App from '../App';
 import '../../setupTests';
+import { resetAllStores } from '../stores';
 
 describe('쇼핑몰 앱 통합 테스트', () => {
   beforeEach(() => {
     // localStorage 초기화
     localStorage.clear();
+    // Zustand 스토어 초기화
+    resetAllStores();
     // console 경고 무시
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     vi.spyOn(console, 'log').mockImplementation(() => {});
