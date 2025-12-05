@@ -1,6 +1,6 @@
-import { CartItem, Coupon } from '../../types';
-import { ShoppingBagIcon, EmptyCartIcon, CloseIcon } from './icons';
-import { formatPrice } from '../utils/formatters';
+import { CartItem, Coupon } from '../../../types';
+import { ShoppingBagIcon, EmptyCartIcon, CloseIcon } from '../ui/icons';
+import { formatPrice } from '../../utils/formatters';
 
 interface CartProps {
   cart: CartItem[];
@@ -122,9 +122,7 @@ export function Cart({
                 className="w-full text-sm border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
                 value={selectedCoupon?.code || ''}
                 onChange={(e) => {
-                  const coupon = coupons.find(
-                    (c) => c.code === e.target.value
-                  );
+                  const coupon = coupons.find((c) => c.code === e.target.value);
                   if (coupon) onApplyCoupon(coupon);
                   else onClearCoupon();
                 }}

@@ -2,9 +2,9 @@ import { useState, useCallback } from 'react';
 import { useDebounce } from './utils/hooks/useDebounce';
 import { useCart } from './hooks/useCart';
 import { useProducts } from './hooks/useProducts';
-import { CartPage } from './components/CartPage';
-import { AdminPage } from './components/AdminPage';
-import { Header } from './components/Header';
+import { CartPage } from './pages/CartPage';
+import { AdminPage } from './pages/AdminPage';
+import { Header } from './components/shared/Header';
 import { UIToast } from './components/ui/UIToast';
 import { NOTIFICATION_DURATION, SEARCH_DEBOUNCE_DELAY } from './constants';
 

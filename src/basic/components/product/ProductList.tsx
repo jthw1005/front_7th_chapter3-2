@@ -1,4 +1,4 @@
-import { ProductWithUI } from '../models/product';
+import { ProductWithUI } from '../../models/product';
 import { ProductCard } from './ProductCard';
 
 interface ProductListProps {

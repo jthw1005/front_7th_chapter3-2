@@ -1,5 +1,5 @@
 import { DEFAULT_PRODUCT_FORM, DEFAULT_DISCOUNT } from '../../constants';
-import { CloseIcon } from '../icons';
+import { CloseIcon } from '../ui/icons';
 
 interface ProductFormProps {
   editingProduct: string | null;

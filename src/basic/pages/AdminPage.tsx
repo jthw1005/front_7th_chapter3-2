@@ -11,8 +11,8 @@ import {
   MAX_DISCOUNT_AMOUNT,
 } from '../constants';
 import { isNumericInput, parseNumberInput } from '../utils/validators';
-import { ProductManagement } from './admin/ProductManagement';
-import { CouponManagement } from './admin/CouponManagement';
+import { ProductManagement } from '../components/admin/ProductManagement';
+import { CouponManagement } from '../components/admin/CouponManagement';
 
 interface AdminPageProps {
   onNotification: (

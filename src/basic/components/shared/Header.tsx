@@ -1,4 +1,4 @@
-import { CartIcon } from './icons';
+import { CartIcon } from '../ui/icons';
 import { SearchBar } from './SearchBar';
 
 interface HeaderProps {

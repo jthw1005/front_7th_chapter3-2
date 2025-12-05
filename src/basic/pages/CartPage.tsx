@@ -3,14 +3,15 @@ import { CartItem, Coupon } from '../../types';
 import { ProductWithUI } from '../models/product';
 import { useProducts } from '../hooks/useProducts';
 import { useCoupons } from '../hooks/useCoupons';
-import { Cart } from './Cart';
-import { ProductList } from './ProductList';
-import { EmptySearchResult } from './EmptySearchResult';
+
+import { ProductList } from '../components/product/ProductList';
+import { EmptySearchResult } from '../components/product/EmptySearchResult';
 import { filterProductsBySearchTerm } from '../models/product';
 import {
   formatPriceWithSymbol,
   generateOrderNumber,
 } from '../utils/formatters';
+import { Cart } from '../components/cart/Cart';
 
 interface CartPageProps {
   searchTerm: string;

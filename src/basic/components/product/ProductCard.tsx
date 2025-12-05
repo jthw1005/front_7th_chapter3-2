@@ -1,6 +1,6 @@
-import { Product } from '../../types';
-import { ImageIcon } from './icons';
-import { formatPercentage } from '../utils/formatters';
+import { Product } from '../../../types';
+import { ImageIcon } from '../ui/icons';
+import { formatPercentage } from '../../utils/formatters';
 
 interface ProductWithUI extends Product {
   description?: string;
@@ -34,7 +34,10 @@ export function ProductCard({
         )}
         {product.discounts.length > 0 && (
           <span className="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
-            ~{formatPercentage(Math.max(...product.discounts.map((d) => d.rate)))}
+            ~
+            {formatPercentage(
+              Math.max(...product.discounts.map((d) => d.rate))
+            )}
           </span>
         )}
       </div>

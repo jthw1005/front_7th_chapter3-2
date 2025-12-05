@@ -1,6 +1,6 @@
 import { Coupon } from '../../../types';
 import { DEFAULT_COUPON_FORM } from '../../constants';
-import { PlusIcon } from '../icons';
+import { PlusIcon } from '../ui/icons';
 import { CouponCard } from './CouponCard';
 import { CouponForm } from './CouponForm';
 

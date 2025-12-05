@@ -1,5 +1,5 @@
 import { Coupon } from '../../../types';
-import { TrashIcon } from '../icons';
+import { TrashIcon } from '../ui/icons';
 import { formatDiscount } from '../../utils/formatters';
 
 interface CouponCardProps {
