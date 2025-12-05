@@ -1,5 +1,6 @@
 import { Coupon } from '../../../types';
 import { TrashIcon } from '../icons';
+import { formatDiscount } from '../../utils/formatters';
 
 interface CouponCardProps {
   coupon: Coupon;
@@ -15,9 +16,7 @@ export function CouponCard({ coupon, onDelete }: CouponCardProps) {
           <p className="text-sm text-gray-600 mt-1 font-mono">{coupon.code}</p>
           <div className="mt-2">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-indigo-700">
-              {coupon.discountType === 'amount'
-                ? coupon.discountValue.toLocaleString() + '원 할인'
-                : coupon.discountValue + '% 할인'}
+              {formatDiscount(coupon.discountType, coupon.discountValue)}
             </span>
           </div>
         </div>

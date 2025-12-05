@@ -7,6 +7,10 @@ import { Cart } from './Cart';
 import { ProductList } from './ProductList';
 import { EmptySearchResult } from './EmptySearchResult';
 import { filterProductsBySearchTerm } from '../models/product';
+import {
+  formatPriceWithSymbol,
+  generateOrderNumber,
+} from '../utils/formatters';
 
 interface CartPageProps {
   searchTerm: string;
@@ -58,7 +62,7 @@ export function CartPage({
         return 'SOLD OUT';
       }
     }
-    return '\u20A9' + price.toLocaleString();
+    return formatPriceWithSymbol(price);
   };
 
   const addToCart = useCallback(
@@ -99,7 +103,7 @@ export function CartPage({
   );
 
   const completeOrder = useCallback(() => {
-    const orderNumber = 'ORD-' + Date.now();
+    const orderNumber = generateOrderNumber();
     onNotification(
       '주문이 완료되었습니다. 주문번호: ' + orderNumber,
       'success'

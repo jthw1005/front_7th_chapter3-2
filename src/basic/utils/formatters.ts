@@ -25,30 +25,6 @@ export const formatPriceWithSymbol = (price: number): string => {
 };
 
 /**
- * 날짜를 YYYY-MM-DD 형식으로 포맷
- * @param date - Date 객체
- * @returns 포맷된 날짜 문자열
- */
-export const formatDate = (date: Date): string => {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return year + '-' + month + '-' + day;
-};
-
-/**
- * 날짜와 시간을 포맷
- * @param date - Date 객체
- * @returns 포맷된 날짜/시간 문자열
- */
-export const formatDateTime = (date: Date): string => {
-  const dateStr = formatDate(date);
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  return dateStr + ' ' + hours + ':' + minutes;
-};
-
-/**
  * 소수를 퍼센트 문자열로 변환
  * @param rate - 소수 (예: 0.1)
  * @returns 퍼센트 문자열 (예: "10%")

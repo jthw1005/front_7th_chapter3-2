@@ -1,5 +1,6 @@
 import { ProductWithUI } from '../../models/product';
 import { DEFAULT_PRODUCT_FORM } from '../../constants';
+import { formatPrice } from '../../utils/formatters';
 import { ProductForm } from './ProductForm';
 
 interface ProductManagementProps {
@@ -7,7 +8,6 @@ interface ProductManagementProps {
   showProductForm: boolean;
   editingProduct: string | null;
   productForm: typeof DEFAULT_PRODUCT_FORM;
-  formatPrice: (price: number) => string;
   onStartAdd: () => void;
   onStartEdit: (product: ProductWithUI) => void;
   onDelete: (productId: string) => void;
@@ -29,7 +29,6 @@ export function ProductManagement({
   showProductForm,
   editingProduct,
   productForm,
-  formatPrice,
   onStartAdd,
   onStartEdit,
   onDelete,

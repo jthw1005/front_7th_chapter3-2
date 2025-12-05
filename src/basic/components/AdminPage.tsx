@@ -34,10 +34,6 @@ export function AdminPage({ onNotification }: AdminPageProps) {
   const [productForm, setProductForm] = useState(DEFAULT_PRODUCT_FORM);
   const [couponForm, setCouponForm] = useState(DEFAULT_COUPON_FORM);
 
-  const formatPrice = (price: number): string => {
-    return price.toLocaleString() + '원';
-  };
-
   const handleAddProduct = useCallback(
     (newProduct: Omit<ProductWithUI, 'id'>) => {
       addProduct(newProduct);
@@ -230,7 +226,6 @@ export function AdminPage({ onNotification }: AdminPageProps) {
           showProductForm={showProductForm}
           editingProduct={editingProduct}
           productForm={productForm}
-          formatPrice={formatPrice}
           onStartAdd={() => {
             setEditingProduct('new');
             setProductForm({ ...DEFAULT_PRODUCT_FORM, discounts: [] });
